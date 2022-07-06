@@ -1,8 +1,18 @@
 # merge_doc_files
-Утилита командной строки, которая объединяет все doc файлы из текущей папки в один doc файл.
+CLI utility to merge some docx files in one.
 
-## Алгоритм
-1. Проверяем наличие файла "context.txt". 
-2. Если файла нет, то создаём (Список файлов docx в текущей директории) и выходим.
-3. Из файла "context.txt" cоздаём list 'docx-files' для объединения этих файлов в один.
-4. Объединяем последовательно docx-файлы из list 'docx-files' в один docx-файл.
+Merge docx-files in the current directory.
+
+The first run creates a file with a list of docx files 'context_docx.txt' to sort or delete unnecessary.
+
+The second run creates a merged docx file based on the list from  'context_docx.txt'.
+
+## Install:
+```
+pip install -r requirements.txt
+```
+
+## Usage:
+```
+python3 merge_docx.py
+```

@@ -135,4 +135,4 @@ dmypy.json
 /security.py
 tmp/
 /merged.docx
-/context.txt
+/context_*.txt
