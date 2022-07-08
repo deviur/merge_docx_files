@@ -8,7 +8,7 @@ def get_docx_files():
 
 
 def load_docx_files():
-    with open('context_docx.txt', 'r') as fp:
+    with open('content_docx.txt', 'r') as fp:
         return [line.rstrip() for line in fp.readlines()]
 
 
@@ -28,7 +28,8 @@ def append(from_where: docx.Document, to_where: docx.Document()):
     for p in from_where.paragraphs:
         try:
             to_p = to_where.add_paragraph('', p.style.name)
-        except KeyError:
+        except KeyError:  # Document 'to_where' has not the style 'p.style.name'
+            # TODO: Add 'p.style.name' style to the document 'to_where'
             to_p = to_where.add_paragraph('')
 
         to_p.alignment = p.alignment
@@ -41,9 +42,9 @@ def main():
         os.remove('merged.docx')
 
     try:
-        open('context_docx.txt', 'r')
+        open('content_docx.txt', 'r')
     except FileNotFoundError:
-        with open('context_docx.txt', 'w') as fp:
+        with open('content_docx.txt', 'w') as fp:
             for f in get_docx_files():
                 fp.write(f + '\n')
         return
