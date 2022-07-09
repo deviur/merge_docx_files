@@ -14,11 +14,7 @@ def load_docx_files():
 
 def copy_paragraph(from_par, to_par):
     for r in from_par.runs:
-        if r.style:
-            to_r = to_par.add_run(r.text, r.style.name)
-        else:
-            to_r = to_par.add_run(r.text)
-
+        to_r = to_par.add_run(r.text, r.style.name if r.style else None)
         to_r.bold = r.bold
         to_r.underline = r.underline
         to_r.italic = r.italic
@@ -27,7 +23,7 @@ def copy_paragraph(from_par, to_par):
 def append(from_where: docx.Document, to_where: docx.Document()):
     for p in from_where.paragraphs:
         try:
-            to_p = to_where.add_paragraph('', p.style.name)
+            to_p = to_where.add_paragraph('', p.style.name if p.style else None)
         except KeyError:  # Document 'to_where' has not the style 'p.style.name'
             # TODO: Add 'p.style.name' style to the document 'to_where'
             to_p = to_where.add_paragraph('')
