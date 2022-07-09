@@ -1,4 +1,4 @@
-# merge_doc_files
+# merge_docx_files
 CLI utility to merge some docx files in one.
 
 Merge docx-files in the current directory.
